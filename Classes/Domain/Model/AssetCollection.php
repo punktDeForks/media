@@ -100,14 +100,15 @@ class AssetCollection
      * Add one asset to the asset collection
      *
      * @param Asset $asset
-     * @return boolean
+     * @return bool
      */
-    public function addAsset(Asset $asset)
+    public function addAsset(Asset $asset): bool
     {
-        if ($this->assets->contains($asset) === false) {
+        if ($asset->getAssetCollections()->contains($this) === false) {
             $this->assets->add($asset);
             return true;
         }
+
         return false;
     }
 
